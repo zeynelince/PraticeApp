@@ -18,7 +18,7 @@ checkButton.addEventListener('click', async () => {
 
     try {
         // DİKKAT: Adres "http://127.0.0.1:3000" ile başlamalı!
-        const response = await fetch('http://127.0.0.1:3000/api/check-sentence', {
+        const response = await fetch('https://praticeapp.onrender.com/api/check-sentence', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ sentence: sentence })
