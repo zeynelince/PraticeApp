@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A1 İngilizce Cümle Pratiği (Gemini AI)</title>
+
+    <style>
+        /* Sayfanın tamamı için temel ayarlar */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 90vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Ana uygulama kutusu */
+        .container {
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Başlık */
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        /* Açıklama metni */
+        p {
+            color: #555;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        /* Cümle giriş alanı */
+        #sentenceInput {
+            width: 95%;
+            font-size: 1.1em;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+            margin-bottom: 20px;
+            font-family: inherit;
+            resize: vertical; /* Sadece dikey büyütme */
+        }
+
+        #sentenceInput:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        /* Kontrol et butonu */
+        #checkButton {
+            background-color: #007bff;
+            color: white;
+            font-size: 1.1em;
+            font-weight: bold;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+
+        #checkButton:hover {
+            background-color: #0056b3;
+        }
+
+        /* Butonun "Kontrol ediliyor..." durumu */
+        #checkButton:disabled {
+            background-color: #aaa;
+            cursor: not-allowed;
+        }
+
+        /* Sonuç alanı */
+        #feedbackResult {
+            margin-top: 25px;
+            font-size: 1.2em;
+            line-height: 1.6;
+            text-align: left;
+            padding: 15px;
+            border-radius: 8px;
+            /* JavaScript bu alanı renklendirecek */
+        }
+        
+        /* Sonuç stilleri (JS tarafından eklenecek) */
+        .result-correct {
+            background-color: #e6f7ec;
+            border: 1px solid #b7e1cd;
+            color: #155724;
+        }
+        
+        .result-incorrect {
+            background-color: #fdebee;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>A1 İngilizce Pratik 🚀</h2>
+        <p>Cümleni yaz, yapay zeka kontrol etsin!</p>
+
+        <textarea id="sentenceInput" rows="3" placeholder="Örn: I am happy"></textarea>
+
+        <button id="checkButton">Kontrol Et</button>
+
+        <div id="feedbackResult">
+            </div>
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
