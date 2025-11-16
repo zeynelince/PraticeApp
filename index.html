@@ -106,6 +106,85 @@
             border: 1px solid #f5c6cb;
             color: #721c24;
         }
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .tense-selector-container {
+            display: flex;
+            justify-content: space-between; /* Etiketi sola, kutuyu sağa yaslar */
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .tense-selector-container label {
+            font-size: 1em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .tense-selector {
+            width: 65%; /* Genişliği ayarla */
+            font-size: 0.95em;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+            background-color: #fff;
+            font-family: inherit;
+        }
+        
+        .tense-selector:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        /* Example Structures (içeriği JS ile dolacak) için stiller */
+        .example-structures {
+            background-color: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            text-align: left;
+            font-size: 0.95em;
+            /* İçerik olmadığında gizle */
+            display: none; 
+        }
+
+        .example-structures.visible {
+            display: block; /* JS bu class'ı ekleyecek */
+        }
+        
+        /* Bu stiller dinamik olarak eklenen HTML için geçerli olacak */
+        .structure-title {
+            font-weight: bold;
+            font-size: 1.05em;
+            color: #333;
+            margin: 0 0 10px 0;
+            text-align: left;
+        }
+        
+        .example-structures ul {
+            margin: 0;
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+
+        .example-structures li {
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        
+        .example-structures b {
+             color: #0056b3;
+        }
+
+        .example-text {
+            color: #555;
+            font-style: italic;
+            font-size: 0.95em;
+        }
     </style>
 </head>
 <body>
@@ -113,6 +192,18 @@
     <div class="container">
         <h2>A1 İngilizce Pratik 🚀</h2>
         <p>Cümleni yaz, yapay zeka kontrol etsin!</p>
+        <div class="tense-selector-container">
+            <label for="tenseSelector">Kalıpları Gör:</label>
+            <select id="tenseSelector" class="tense-selector">
+                <option value="simple_present" selected>Simple Present (Geniş Zaman)</option>
+                <option value="simple_past">Simple Past (Geçmiş Zaman)</option>
+                <option value="simple_future">Simple Future (Gelecek Zaman)</option>
+                </select>
+        </div>
+
+        <div class="example-structures" id="tense-examples-box">
+            </div>
+
 
         <textarea id="sentenceInput" rows="3" placeholder="Örn: I am happy"></textarea>
 
@@ -122,14 +213,15 @@
             </div>
     </div>
 
-    <footer>
+    <footer id="footer" style="text-align:center; margin-top:40px; font-family: Arial, sans-serif; color:#555;" >
         <p style="text-align:center; margin-top:20px; color:#777; font-size:0.9em;">
-            © 2024 Yapay Zeka Destekli Dil Pratiği
+            © 2025 Yapay Zeka Destekli Dil Pratiği
         </p>
-        <p>version : 1.0.0</p>
+        <p style="text-align:center; color:#777; font-size:0.9em;">version : 1.0.0</p>
     </footer>
 
     <script src="app.js"></script>
+    <script src="update-tenses.js"></script>
 
 </body>
 </html>
