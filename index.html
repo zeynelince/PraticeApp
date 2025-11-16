@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,11 +13,13 @@
             background-color: #f4f7f6;
             color: #333;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 90vh;
             margin: 0;
             padding: 20px;
+            box-sizing: border-box;
         }
 
         /* Ana uygulama kutusu */
@@ -52,7 +55,8 @@
             border: 2px solid #ddd;
             margin-bottom: 20px;
             font-family: inherit;
-            resize: vertical; /* Sadece dikey büyütme */
+            resize: vertical;
+            /* Sadece dikey büyütme */
         }
 
         #sentenceInput:focus {
@@ -93,27 +97,44 @@
             border-radius: 8px;
             /* JavaScript bu alanı renklendirecek */
         }
-        
+
         /* Sonuç stilleri (JS tarafından eklenecek) */
         .result-correct {
             background-color: #e6f7ec;
             border: 1px solid #b7e1cd;
             color: #155724;
         }
-        
+
         .result-incorrect {
             background-color: #fdebee;
             border: 1px solid #f5c6cb;
             color: #721c24;
         }
+
         footer {
-            position: fixed;
+            margin-top: 15px;
             bottom: 0;
             width: 100%;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: #555;
+            padding-bottom: 10px;
+            /* Alttan biraz boşluk */
         }
+
+        /* Footer içindeki p etiketleri için stiller */
+        footer p {
+            text-align: center;
+            color: #777;
+            font-size: 0.9em;
+            margin: 5px 0;
+            /* Satırlar arası boşluğu azalttık */
+        }
+
         .tense-selector-container {
             display: flex;
-            justify-content: space-between; /* Etiketi sola, kutuyu sağa yaslar */
+            justify-content: space-between;
+            /* Etiketi sola, kutuyu sağa yaslar */
             align-items: center;
             margin-bottom: 15px;
         }
@@ -125,7 +146,8 @@
         }
 
         .tense-selector {
-            width: 65%; /* Genişliği ayarla */
+            width: 65%;
+            /* Genişliği ayarla */
             font-size: 0.95em;
             padding: 8px 12px;
             border-radius: 8px;
@@ -133,7 +155,7 @@
             background-color: #fff;
             font-family: inherit;
         }
-        
+
         .tense-selector:focus {
             border-color: #007bff;
             outline: none;
@@ -149,13 +171,14 @@
             text-align: left;
             font-size: 0.95em;
             /* İçerik olmadığında gizle */
-            display: none; 
+            display: none;
         }
 
         .example-structures.visible {
-            display: block; /* JS bu class'ı ekleyecek */
+            display: block;
+            /* JS bu class'ı ekleyecek */
         }
-        
+
         /* Bu stiller dinamik olarak eklenen HTML için geçerli olacak */
         .structure-title {
             font-weight: bold;
@@ -164,7 +187,7 @@
             margin: 0 0 10px 0;
             text-align: left;
         }
-        
+
         .example-structures ul {
             margin: 0;
             padding-left: 20px;
@@ -175,9 +198,9 @@
             margin-bottom: 12px;
             line-height: 1.5;
         }
-        
+
         .example-structures b {
-             color: #0056b3;
+            color: #0056b3;
         }
 
         .example-text {
@@ -185,8 +208,65 @@
             font-style: italic;
             font-size: 0.95em;
         }
+
+        @media (max-width: 600px) {
+            body {
+                /* Cihazın tamamını doldursun ve kenar boşluğunu azalt */
+                padding: 10px;
+                min-height: 100vh;
+            }
+
+            .container {
+                /* Kutunun kenar boşluklarını önemli ölçüde azalt */
+                padding: 20px 15px;
+            }
+
+            /* Başlık ve metinleri mobil için ayarla */
+            h2 {
+                font-size: 1.6em;
+            }
+
+            /* Ana metin, buton ve giriş alanının yazı tipini küçült */
+            p,
+            #sentenceInput,
+            #checkButton {
+                font-size: 1.0em;
+            }
+
+            #feedbackResult {
+                font-size: 1.05em;
+            }
+
+            /* Tense seçiciyi dikeyde hizala (çok önemli) */
+            .tense-selector-container {
+                flex-direction: column;
+                /* Etiketi ve kutuyu alt alta getir */
+                align-items: flex-start;
+                /* Öğeleri sola hizala */
+            }
+
+            .tense-selector-container label {
+                margin-bottom: 8px;
+                /* Etiket ile kutu arasına boşluk */
+            }
+
+            .tense-selector {
+                width: 100%;
+                /* Seçim kutusu tam genişlik olsun */
+            }
+
+            /* Footer yazılarını mobilde biraz daha küçült */
+            footer p {
+                font-size: 0.85em;
+                margin: 3px 0;
+            }
+        }
+        #feedbackResult {
+            white-space: pre-wrap;
+        }
     </style>
 </head>
+
 <body>
 
     <div class="container">
@@ -198,11 +278,11 @@
                 <option value="simple_present" selected>Simple Present (Geniş Zaman)</option>
                 <option value="simple_past">Simple Past (Geçmiş Zaman)</option>
                 <option value="simple_future">Simple Future (Gelecek Zaman)</option>
-                </select>
+            </select>
         </div>
 
         <div class="example-structures" id="tense-examples-box">
-            </div>
+        </div>
 
 
         <textarea id="sentenceInput" rows="3" placeholder="Örn: I am happy"></textarea>
@@ -210,18 +290,17 @@
         <button id="checkButton">Kontrol Et</button>
 
         <div id="feedbackResult">
-            </div>
+        </div>
     </div>
 
-    <footer id="footer" style="text-align:center; margin-top:40px; font-family: Arial, sans-serif; color:#555;" >
-        <p style="text-align:center; margin-top:20px; color:#777; font-size:0.9em;">
-            © 2025 Yapay Zeka Destekli Dil Pratiği
-        </p>
-        <p style="text-align:center; color:#777; font-size:0.9em;">version : 1.0.0</p>
+    <footer id="footer">
+    <p>© 2025 Yapay Zeka Destekli Dil Pratiği</p>
+    <p>version : 1.0.0</p>
     </footer>
 
     <script src="app.js"></script>
     <script src="update-tenses.js"></script>
 
 </body>
+
 </html>
