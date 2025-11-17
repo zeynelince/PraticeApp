@@ -44,7 +44,7 @@ app.post('/api/check-sentence', async (req, res) => {
         const finalPrompt = `${SABIT_PROMPT}\n\nKullanıcı Cümlesi: "${sentence}"`;
 
         // Gemini (Aşçı) ile konuş
-        const model = genAI.getGenerativeModel({ model: "gemini-2.5-pro" });
+        const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
         const result = await model.generateContent(finalPrompt);
         const responseText = await result.response.text();
 
