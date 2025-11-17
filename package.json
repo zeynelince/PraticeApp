@@ -5,6 +5,7 @@
   "main": "example.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node example.js"
   },
   "type": "module",
   "dependencies": {
@@ -14,12 +15,5 @@
     "dotenv": "^17.2.3",
     "express": "^5.1.0"
   }
-  {
-  ...
-  "scripts": {
-    "start": "node example.js"
-  },
-  ...
-}
 
 }
